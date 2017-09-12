@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>545</width>
+    <height>429</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Helium Compressor Control</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/img/logo.svg</normaloff>:/img/logo.svg</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="layout_main">
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabs">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab_basic">
+       <attribute name="title">
+        <string>Basic</string>
+       </attribute>
+       <layout class="QGridLayout" name="layout_tab_basic">
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="box_pressure">
+          <property name="title">
+           <string>Pressure [psig]</string>
+          </property>
+          <layout class="QGridLayout" name="layout_pressure">
+           <item row="0" column="0">
+            <widget class="QLCDNumber" name="lcd_pressure_1">
+             <property name="smallDecimalPoint">
+              <bool>true</bool>
+             </property>
+             <property name="digitCount">
+              <number>3</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="box_temperature">
+          <property name="title">
+           <string>Temperature [°C]</string>
+          </property>
+          <layout class="QGridLayout" name="layout_temperature">
+           <item row="1" column="0" rowspan="2">
+            <widget class="QLCDNumber" name="lcd_temperature_1">
+             <property name="digitCount">
+              <number>3</number>
+             </property>
+             <property name="value" stdset="0">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2" rowspan="2">
+            <widget class="QLCDNumber" name="lcd_temperature_3">
+             <property name="digitCount">
+              <number>3</number>
+             </property>
+             <property name="value" stdset="0">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1" rowspan="2">
+            <widget class="QLCDNumber" name="lcd_temperature_2">
+             <property name="digitCount">
+              <number>3</number>
+             </property>
+             <property name="value" stdset="0">
+              <double>0.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_temperature_helium">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Compressor capsule helium discharge temperature</string>
+             </property>
+             <property name="text">
+              <string>Helium</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_temperature_waterIn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Water inlet temperature</string>
+             </property>
+             <property name="text">
+              <string>Water In</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_temperature_waterOut">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="toolTip">
+              <string>Water outlet temperature</string>
+             </property>
+             <property name="text">
+              <string>Water Out</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_advanced">
+       <attribute name="title">
+        <string>Advanced</string>
+       </attribute>
+       <layout class="QGridLayout" name="layout_tab_advanced">
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_devices">
+          <property name="text">
+           <string>Device:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0" colspan="4">
+         <spacer name="verticalSpacer_1">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="3" column="3">
+         <widget class="QPushButton" name="button_stopColdHead">
+          <property name="text">
+           <string>Stop Cold Head</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1" colspan="3">
+         <widget class="QComboBox" name="list_devices"/>
+        </item>
+        <item row="4" column="0" colspan="4">
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="2" column="3">
+         <widget class="QPushButton" name="button_startColdHead">
+          <property name="text">
+           <string>Start Cold Head</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="button_reset">
+          <property name="text">
+           <string>Reset</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0" colspan="4">
+         <widget class="QPushButton" name="button_topmost">
+          <property name="text">
+           <string>Keep Above All</string>
+          </property>
+          <property name="checkable">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="2">
+     <widget class="QPushButton" name="button_on">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>Turn On</string>
+      </property>
+      <property name="shortcut">
+       <string>Space</string>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QFrame" name="box_state">
+      <property name="frameShape">
+       <enum>QFrame::Panel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="layout_state" columnstretch="1,1">
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_state_solenoidOn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: lightgreen;
+background-color: green;
+}
+QLabel:disabled {
+color: gray;
+background-color: #003300;
+}</string>
+         </property>
+         <property name="text">
+          <string>Solenoid
+On</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLabel" name="label_state_heliumTemperatureAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Shutdown if helium discharge temperature &gt; 93 °C</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: white;
+background-color: red;
+}
+QLabel:disabled {
+color: gray;
+background-color: #221111;
+}</string>
+         </property>
+         <property name="text">
+          <string>Helium
+Temperature</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="label_state_oilLevelAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: black;
+background-color: orange;
+}
+QLabel:disabled {
+color: gray;
+background-color: #332100;
+}</string>
+         </property>
+         <property name="text">
+          <string>Oil Level</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="label_state_coldHeadPause">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: yellow;
+background-color: yellowgreen;
+}
+QLabel:disabled {
+color: gray;
+background-color: #1f290a;
+}</string>
+         </property>
+         <property name="text">
+          <string>Cold Head
+Pause</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_state_oilFaultOff">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: white;
+background-color: red;
+}
+QLabel:disabled {
+color: gray;
+background-color: #221111;
+}</string>
+         </property>
+         <property name="text">
+          <string>Oil Fault
+Off</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="label_state_faultOff">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: white;
+background-color: red;
+}
+QLabel:disabled {
+color: gray;
+background-color: #221111;
+}</string>
+         </property>
+         <property name="text">
+          <string>Fault
+Off</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_state_powerAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: white;
+background-color: red;
+}
+QLabel:disabled {
+color: gray;
+background-color: #221111;
+}</string>
+         </property>
+         <property name="text">
+          <string>Mains
+Power</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLabel" name="label_state_motorTemperatureAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Shutdown if Return Pressure &gt; 140 psig</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: white;
+background-color: red;
+}
+QLabel:disabled {
+color: gray;
+background-color: #221111;
+}</string>
+         </property>
+         <property name="text">
+          <string>Motor
+Temperature</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_state_coldHeadRun">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: lightgreen;
+background-color: green;
+}
+QLabel:disabled {
+color: gray;
+background-color: #003300;
+}</string>
+         </property>
+         <property name="text">
+          <string>Cold Head
+Run</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_state_localOn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: lightgreen;
+background-color: green;
+}
+QLabel:disabled {
+color: gray;
+background-color: #003300;
+}</string>
+         </property>
+         <property name="text">
+          <string>Local
+On</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_state_systemOn">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: lightgreen;
+background-color: green;
+}
+QLabel:disabled {
+color: gray;
+background-color: #003300;
+}</string>
+         </property>
+         <property name="text">
+          <string>System
+On</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_state_waterFlowAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Alarm if water temperature &gt; 46 °C</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: black;
+background-color: orange;
+}
+QLabel:disabled {
+color: gray;
+background-color: #332100;
+}</string>
+         </property>
+         <property name="text">
+          <string>Water
+Flow</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_state_pressureAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Shutdown if return pressure &lt; 15 psig</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: white;
+background-color: red;
+}
+QLabel:disabled {
+color: gray;
+background-color: #221111;
+}</string>
+         </property>
+         <property name="text">
+          <string>Pressure</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLabel" name="label_state_waterTemperatureAlarm">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="toolTip">
+          <string>Alarm if water temperature &gt; 35 °C</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+border-radius: 25%;
+}
+QLabel:enabled {
+color: black;
+background-color: orange;
+}
+QLabel:disabled {
+color: gray;
+background-color: #332100;
+}</string>
+         </property>
+         <property name="text">
+          <string>Water
+Temperature</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>
